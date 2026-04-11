@@ -1,0 +1,32 @@
+{% extends "eventos/base.html" %}
+
+{% block title %}Confirmar Exclusão — Gerenciador de Rotina{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white fw-semibold">Confirmar Exclusão</div>
+            <div class="card-body text-center">
+                <p class="fs-5">Deseja realmente excluir esse evento?</p>
+                <p class="fw-bold">{{ evento.descricao }}</p>
+
+                <p class="text-muted">
+                    {% if evento.dia_inteiro %}
+                        {{ evento.data_hora|date:"d/m/Y" }}
+                    {% else %}
+                        {{ evento.data_hora|date:"d/m/Y H:i" }}
+                    {% endif %}
+                    — {{ evento.get_ciclo_display }}
+                </p>
+
+                <form method="post" class="d-flex justify-content-center gap-3 mt-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Sim, excluir</button>
+                    <a href="{% url 'eventos:index' %}" class="btn btn-outline-secondary">Cancelar</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
