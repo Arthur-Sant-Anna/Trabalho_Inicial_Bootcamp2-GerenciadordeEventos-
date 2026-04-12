@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 # Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-
 Desafio inicial do Bootcamp 2 - Aplicação para organização e controle da rotina diária
 =======
 # Gerenciador de Rotina
 
-![CI](https://github.com/seu-usuario/seu-repositorio/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-/actions/workflows/ci.yml)
 
 ## Descrição do Problema
 
@@ -62,4 +61,3 @@ python manage.py migrate
 
 # Execute a aplicação
 python manage.py runserver
->>>>>>> d584130 (projeto finalizado)
