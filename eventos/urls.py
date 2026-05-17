@@ -9,4 +9,5 @@ urlpatterns = [
     path("adicionar/", views.adicionar, name="adicionar"),
     path("editar/<int:pk>/", views.editar, name="editar"),
     path("excluir/<int:pk>/", views.excluir, name="excluir"),
+    path('api/eventos/', views.api_eventos, name='api_eventos'),
 ]

@@ -5,6 +5,11 @@ from django.utils import timezone
 from .forms import EventoForm
 from .models import Eventos, CICLOS
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from .models import Eventos
+from .serializers import EventoSerializer
 
 def index(request):
     eventos = Eventos.objects.all().order_by("-data_hora")
@@ -57,3 +62,12 @@ def excluir(request, pk):
         return redirect("eventos:index")
 
     return render(request, "eventos/confirmar_exclusao.html", {"evento": evento})
+
+@api_view(['GET'])
+def api_eventos(request):
+
+    eventos = Eventos.objects.all()
+
+    serializer = EventoSerializer(eventos, many=True)
+
+    return Response(serializer.data)
