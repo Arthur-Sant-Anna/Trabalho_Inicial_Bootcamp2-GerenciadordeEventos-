@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerenciador de Eventos - Organize seus eventos de forma simples e eficiente">
+    <title>Gerenciador de Eventos - GitHub Pages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        /* Navigation */
+        navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: #667eea !important;
+            font-size: 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+        }
+        
+        .hero .btn {
+            margin: 10px;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .hero .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: white;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .feature-card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Demo Section */
+        .demo {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+        
+        .demo-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            overflow: hidden;
+        }
+        
+        .demo h2 {
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+        
+        .demo-table {
+            font-size: 13px;
+        }
+        
+        .demo-table thead {
+            background: #667eea;
+            color: white;
+        }
+        
+        .demo-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge-custom {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            padding: 12px 40px;
+            font-size: 16px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+        
+        .social-links a {
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .feature-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">📅 Gerenciador de Eventos</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Recursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#demo">Demo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Gerenciador de Eventos</h1>
+            <p>Organize seus eventos e tarefas com facilidade e eficiência</p>
+            <div>
+                <a href="https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-" class="btn btn-light" target="_blank">
+                    <i class="fab fa-github"></i> Ver no GitHub
+                </a>
+                <a href="#demo" class="btn btn-outline-light">Ver Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px; font-weight: 700; color: #333;">Principais Recursos</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-plus"></i>
+                        </div>
+                        <h3>Criar Eventos</h3>
+                        <p>Adicione eventos facilmente com data, hora e categorias. Suporte para eventos únicos ou recorrentes.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Filtrar e Buscar</h3>
+                        <p>Encontre eventos rapidamente filtrando por ciclo, data ou categoria. Interface intuitiva de busca.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <h3>Editar e Gerenciar</h3>
+                        <p>Edite ou delete eventos a qualquer momento. Atualizações em tempo real e sincronização automática.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Recorrências</h3>
+                        <p>Crie eventos recorrentes (diário, semanal, mensal, anual) e gerencie automaticamente suas ocorrências.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Responsivo</h3>
+                        <p>Acesse de qualquer dispositivo. Design responsivo que se adapta a smartphones, tablets e desktops.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Código Aberto</h3>
+                        <p>Projeto open-source desenvolvido com Django e Bootstrap. Contribuições são bem-vindas!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo" id="demo">
+        <div class="container">
+            <div class="demo-container">
+                <h2><i class="fas fa-eye"></i> Visualização dos Eventos</h2>
+                <div class="table-responsive">
+                    <table class="table demo-table mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Próxima Ocorrência</th>
+                                <th>Ciclo</th>
+                                <th>Data</th>
+                                <th class="text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Reunião com cliente</strong></td>
+                                <td>18/05/2026 14:00</td>
+                                <td><span class="badge-custom" style="background: #667eea; color: white;">Semanal</span></td>
+                                <td>18/05/2026</td>
+                                <td class="text-center"><span class="badge-custom" style="background: #28a745; color: white;">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Backup do sistema</strong></td>
+                                <td>19/05/2026 02:00</td>
+                                <td><span class="badge-custom" style="background: #17a2b8; color: white;">Diário</span></td>
+                                <td>19/05/2026</td>
+                                <td class="text-center"><span class="badge-custom" style="background: #28a745; color: white;">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reunião de planejamento</strong></td>
+                                <td>23/05/2026 10:00</td>
+                                <td><span class="badge-custom" style="background: #ffc107; color: #333;">Mensal</span></td>
+                                <td>23/05/2026</td>
+                                <td class="text-center"><span class="badge-custom" style="background: #28a745; color: white;">Ativo</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Apresentação do projeto</strong></td>
+                                <td>25/05/2026 15:30</td>
+                                <td><span class="badge-custom" style="background: #6c757d; color: white;">Único</span></td>
+                                <td>25/05/2026</td>
+                                <td class="text-center"><span class="badge-custom" style="background: #dc3545; color: white;">Pendente</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aniversário da empresa</strong></td>
+                                <td>—</td>
+                                <td><span class="badge-custom" style="background: #667eea; color: white;">Anual</span></td>
+                                <td>20/06/2026</td>
+                                <td class="text-center"><span class="badge-custom" style="background: #28a745; color: white;">Ativo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para começar?</h2>
+            <p>Acesse o repositório no GitHub e comece a gerenciar seus eventos agora</p>
+            <a href="https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-" class="btn btn-light btn-lg" target="_blank">
+                <i class="fab fa-github"></i> Acessar Repositório
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-" target="_blank">GitHub</a>
+                <a href="#features">Recursos</a>
+                <a href="#demo">Demo</a>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com/Arthur-Sant-Anna" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p>&copy; 2026 Gerenciador de Eventos. Desenvolvido com ❤️ em Django + Bootstrap</p>
+            <small>Este é um projeto educacional do Bootcamp</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
