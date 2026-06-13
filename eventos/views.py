@@ -8,7 +8,6 @@ from .models import Eventos, CICLOS
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import Eventos
 from .serializers import EventoSerializer
 
 def index(request):
