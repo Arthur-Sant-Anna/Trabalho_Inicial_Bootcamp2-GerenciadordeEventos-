@@ -1,6 +1,10 @@
 # Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-
 Desafio inicial do Bootcamp 2 - Aplicação para organização e controle da rotina diária
 =======
+
+## Integrantes:
+João Henrique Freire de Souza (joao.fsouza@sempreceub.com) e Arthur Sant'Anna da Silveira (arthur.silveira@sempreceub.com)
+
 # Gerenciador de Rotina
 
 ![CI](https://github.com/Arthur-Sant-Anna/Trabalho_Inicial_Bootcamp2-GerenciadordeEventos-/actions/workflows/ci.yml)
@@ -39,6 +43,7 @@ Esta aplicação permite cadastrar e gerenciar eventos com diferentes ciclos (ú
 - ruff
 - GitHub Actions
 - Bootstrap 5
+- Banco de Dados Supabase
 
 ## Instalação
 
